@@ -1,0 +1,50 @@
+
+/*Header Section*/
+header{
+  background:#000000;
+  color:#ffffff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+header a{
+  color:#ffffff;
+  text-decoration: none;
+  text-transform: none;
+  padding: 10px 15px;
+  font-size: .9em;
+  font-weight:100;
+}
+
+header a:hover{
+  color: #a49c9a;
+}
+header li{
+  float: left;
+  display: block;
+  width: 10%;
+}
+
+/*Navigation Bar Images*/
+
+
+
+/*Showcase Sections*/
+
+#showcase{
+  min-height: 155px;
+  background: url('../../../Images/Aruba.jpg') no-repeat, url("../../../Images/Mountain.jpg") 50% no-repeat, url("../../../Images/Florida.JPG") 100% no-repeat;
+  background-size: contain, contain, 270px 200px;
+  text-align: center;
+  color:#000000;
+  border-bottom: #ffffff 3px solid;
+}
+
+#showcase p{
+  padding-top: 0px;
+  font-weight: 580;
+}
+
+
+
+

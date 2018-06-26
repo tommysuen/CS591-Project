@@ -1,0 +1,24 @@
+body{
+  font-family: "Myriad Set Pro", Helvetica, sans-serif;
+  padding:0;
+  margin:0;
+  background-color:#f4f4f4;
+}
+
+/*Globals*/
+.container{
+  margin:auto;
+  overflow:hidden;
+  width:100%;
+}
+
+.navigation{
+  width:1280px !important;
+  margin:auto !important;
+
+}
+
+ul{
+  margin:0 !important;
+  padding: 0 !important;
+}

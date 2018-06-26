@@ -1,0 +1,21 @@
+<header>
+  <div class="container">
+    <div class="navigation">
+      <nav>
+        <ul>
+          <!--Navigation Bar Login and Signout-->
+          <li *ngIf="!login"> <a href="http://localhost:3000/auth/google">Sign In</a></li>
+          <li *ngIf="login"> <a href="http://localhost:3000/auth/logout">Sign Out</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section id="showcase">
+  <div class="container">
+    <p><span style="font-size:2.5em;"> Lets Go Places</span><br/>
+      <span style="font-size:1em;">Travel, Live, Experience</span>
+    </p>
+  </div>
+</section>

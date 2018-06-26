@@ -1,0 +1,60 @@
+<!--
+  Author: Tommy Suen
+-->
+
+<!--Bootstrap 4 CSS Stylesheet integration-->
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<!--Calls the master function which will call the back end's Yelp, Eventful, and Ticketmaster API-->
+<form (submit)= "GetYelpEvent(location.value, entertainment.value)" style="margin:auto; width:50%" class="form-inline">
+  <div>
+    <label>Welcome {{person_name}}!</label>
+    <input placeholder="Pick a place" type="any" style="width:30%; margin-right: 15px" #location required>
+    <input name="entertainment" required ngModel placeholder="Pick an activity" type="any" style="width: 30%; margin-right: 15px" #entertainment="ngModel">
+    <input class="btn btn-secondary" type="submit"style="display: inline-block">
+    <input class="btn btn-secondary" type="button" value="Save Location" style ="float:right;display:inline-block"(click)="PostLocation(location.value, entertainment.value)" *ngIf="login">
+  </div>
+</form>
+
+<!--Only people who are logged in can see their favorite locations and save their interested locations-->
+<span *ngIf="login" style= "float:left; text-indent: 120px; padding-right: 10px;"> Your Favorite Locations: </span>
+<div *ngFor="let content of more_activities">
+  <p (click)="DeleteLocation(content)" class="box">{{content}} |</p>
+
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h4 *ngIf="login">Top Restaurants</h4>
+      <li style="list-style: none;" *ngFor="let food of food">
+        <!--This loop will list all of the top 3 restaurants and a save location button-->
+        <h5>{{food[0]}} |Rating: {{food[2]}} Stars Based on {{food[3]}} Reviews</h5>
+        <a href={{food[5]}}> <img src= {{food[1]}} style="width:200px;height:200px;"></a>
+        <input class="btn btn-secondary" type="button" value="Save Location" style ="float:right;display:inline-block"(click)="PostLocation(location.value, food[0])" *ngIf="login">
+      </li>
+    </div>
+    <div class="col-lg-4">
+      <h4 *ngIf="login">Top Hotels</h4>
+      <li style="list-style: none;" *ngFor="let hotel of hotels">
+        <!--This loop will list all of the top 3 hotels and a save location button-->
+        <h5>{{hotel[0]}} |Rating: {{hotel[2]}} Stars Based on {{hotel[3]}} Reviews</h5>
+        <a href={{hotel[5]}}> <img src= {{hotel[1]}} style="width:200px;height:200px;"></a>
+        <input class="btn btn-secondary" type="button" value="Save Location" style ="float:right;display:inline-block"(click)="PostLocation(location.value, hotel[0])" *ngIf="login">
+      </li>
+    </div>
+    <div class="col-lg-4">
+      <h4 *ngIf="login">Top Activities</h4>
+      <li style="list-style: none;" *ngFor="let activities of activities">
+        <!--This loop will list all of the top 3 User's Choice Entertainment and a save location button-->
+        <h5 *ngIf="activities[2] != -1">{{activities[0]}} |Prices from: ${{activities[2]}} - ${{activities[3]}}</h5>
+        <h5 *ngIf="activities[2] == -1">{{activities[0]}} |No Prices Currently Available</h5>
+        <a href ={{activities[5]}}><img src= {{activities[4]}} style="width:200px;height:200px;"></a>
+        <input class="btn btn-secondary" type="button" value="Save Location" style ="float:right;display:inline-block"(click)="PostLocation(location.value, activities[0])" *ngIf="login">
+      </li>
+  </div>
+</div>
+</div>
